@@ -8,5 +8,5 @@ const app=express()
 app.use(express.json())
 app.use(cookieParser())
 //post/api/auth/register
-app.use("api/auth",authRouter)
+app.use("/api/auth",authRouter)
 module.exports =app

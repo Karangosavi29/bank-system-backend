@@ -22,7 +22,7 @@ async function userRegisterController(req,res){
 
     const token=jwt.sign({ userId:user._id},process.env.JWT_SECRET,{expiresIn: "3d"})
 
-    res.cookies("token",token, { httpOnly: true })
+    res.cookie("token",token, { httpOnly: true })
 
     res
     .status(201)
