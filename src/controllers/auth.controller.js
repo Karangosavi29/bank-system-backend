@@ -1,6 +1,6 @@
 const express=require ("express")
 
-const userModel=require("../models/user.Models.js")
+const userModel=require("../models/user.Model.js")
 const jwt =require("jsonwebtoken")
 const emailservices =require("../services/email.services.js")
 async function userRegisterController(req,res){

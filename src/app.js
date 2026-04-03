@@ -1,12 +1,18 @@
 const express =require("express")
 const cookieParser =require("cookie-parser")
 const authRouter=require("./routes/auth.routes.js")
-
+const accountRouter=require("./routes/account.routes.js")
 
 const app=express()
 
 app.use(express.json())
 app.use(cookieParser())
+
+
 //post/api/auth/register
 app.use("/api/auth",authRouter)
+//api/accounts
+app.use("/api/",accountRouter)
+
+
 module.exports =app
