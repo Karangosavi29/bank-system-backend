@@ -2,7 +2,7 @@ const express=require ("express")
 
 const userModel=require("../models/user.Models.js")
 const jwt =require("jsonwebtoken")
-
+const emailservices =require("../services/email.services.js")
 async function userRegisterController(req,res){
     const {email,name,password}=req.body;
 
@@ -19,6 +19,7 @@ async function userRegisterController(req,res){
     const user= await userModel.create({
         email,password,name
     })
+    await emailservices.sendRegistrationEmail(user.email,user.name)
 
     const token=jwt.sign({ userId:user._id},process.env.JWT_SECRET,{expiresIn: "3d"})
 
@@ -74,7 +75,7 @@ async function userLoginController(req,res) {
             name:user.name
         },
         token
-    })
+    })  
 }
 module.exports ={
     userRegisterController,
