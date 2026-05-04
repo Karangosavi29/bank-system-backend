@@ -1,6 +1,6 @@
 const express=require("express")
 const {authMiddleware}=require("../middleware/auth.middleware.js")
-const { createAccountController } = require("../controllers/account.controller.js")
+const { createAccountController,getUserAccountController } = require("../controllers/account.controller.js")
 
 
 const router =express.Router()
@@ -12,4 +12,13 @@ const router =express.Router()
 
  */
 router.post("/",authMiddleware,createAccountController)
+
+
+/**
+ * -Get /api/account 
+ * get all accounts of the logged in user 
+ * protected api
+ */
+
+router.get("/",authMiddleware,getUserAccountController)
 module.exports= router
